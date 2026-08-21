@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NutriMed Ask — AI Nutrition Chatbot prototype case study by Saranya Selvaraj">
+  <title>NutriMed Ask — Saranya Selvaraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">Saranya Selvaraj</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="case-study">
+    <div class="container fade-in">
+      <a href="../index.html#projects" class="back-link">&larr; Back to Portfolio</a>
+
+      <header class="case-study-header">
+        <span class="tag">AI Prototype</span>
+        <h1>NutriMed Ask — AI Nutrition Chatbot</h1>
+      </header>
+
+      <section class="case-section">
+        <h2>Overview</h2>
+        <p>NutriMed Ask is a nutrition chatbot prototype, built in Google AI Studio, that answers user questions using content from the Irish Nutrition &amp; Dietetic Institute (INDI). The goal was to prototype how grounded, source-based responses could be delivered through a clean conversational interface, using a low-code AI platform rather than a custom-engineered backend. The chatbot delivers nutrition guidance grounded in INDI content.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>The Challenge</h2>
+        <p>General-purpose LLMs can give plausible but unreliable nutrition advice. Users need answers grounded in trusted, authoritative content — not hallucinated recommendations. The challenge was to prototype a chatbot experience that surfaces relevant INDI content and returns answers users can trust, validating the product concept quickly using Google AI Studio before considering any custom backend build.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Approach</h2>
+        <p>I scoped the prototype requirements, defined the user flows, and built the chatbot experience in Google AI Studio:</p>
+        <ul>
+          <li>Structured INDI public content as grounding material for the chatbot</li>
+          <li>Designed conversational flows for common nutrition queries</li>
+          <li>Configured system instructions and grounding prompts to keep responses tied to INDI content and reduce hallucination</li>
+          <li>Tested responses against ambiguous and out-of-scope questions</li>
+          <li>Defined evaluation criteria around answer relevance, source attribution, and edge-case handling</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Key Artefacts</h2>
+        <ul>
+          <li>Product requirements document (PRD) with user stories and acceptance criteria</li>
+          <li>Working chatbot prototype built in Google AI Studio</li>
+          <li>Structured INDI content set used as grounding material</li>
+          <li>Evaluation criteria for response quality, source grounding, and edge-case handling</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Outcome / Impact</h2>
+        <p>Delivered a working chatbot prototype that returns source-grounded nutrition answers using Google AI Studio. It handles multi-turn queries and demonstrates how a low-code AI platform can validate a product concept quickly — from requirements through prototype to evaluation.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>What I Learned</h2>
+        <p>Building this prototype taught me that grounding quality matters more than model choice — how source content is structured and how prompts are designed are product decisions, not just engineering details. My QA background proved valuable for defining edge cases: ambiguous queries, out-of-scope questions, and situations where the chatbot should say it doesn't know rather than guess.</p>
+      </section>
+
+      <section class="case-links">
+        <h2>Links</h2>
+        <div class="btn-group">
+          <a href="https://nutrimedask.onrender.com" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Live Demo</a>
+          <a href="https://github.com/saranya-selvaraj/NutriMedAsk" class="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">View Code</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranya Selvaraj &middot; Built with purpose, not a template.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

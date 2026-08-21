@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Transaction Decisioning API — Payment Rule Fix case study by Saranya Selvaraj">
+  <title>Transaction Decisioning API — Saranya Selvaraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">Saranya Selvaraj</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="case-study">
+    <div class="container fade-in">
+      <a href="../index.html#projects" class="back-link">&larr; Back to Portfolio</a>
+
+      <header class="case-study-header">
+        <span class="tag">Product Ownership</span>
+        <h1>Transaction Decisioning API — Payment Rule Fix</h1>
+        <p class="case-subnote">Payment service provider &middot; Real TPO work, from my time as Technical Product Owner</p>
+      </header>
+
+      <section class="case-section">
+        <h2>Overview</h2>
+        <p>As Technical Product Owner for an API-driven transaction decisioning product, I owned the backlog for a fix to a mis-firing rule that was causing legitimate transactions to be declined. This case study covers how I turned that fix into a precise, edge-case-complete story and acceptance criteria — and how I'd approach the same problem with an AI-driven decisioning model today.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>The Challenge</h2>
+        <p>A decisioning rule was firing in scenarios where the correct outcome should have been approval, causing legitimate transactions to be declined. The compliance framework governing the decisioning engine was already in place — my job was to translate the fix into a precise, unambiguous story with acceptance criteria that covered every edge case, without introducing new risk into an already-regulated system.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Approach</h2>
+        <p>I owned this end-to-end as Technical Product Owner, following the team's standard delivery cycle:</p>
+        <ul>
+          <li>Refined the epic with the PM and agreed the requirements</li>
+          <li>Scoped a feature to add a field to the API that suppresses the rule for defined scenarios, so the decisioning engine produces the correct approve/decline outcome</li>
+          <li>Worked with the tech lead and architect on high-level and low-level technical design, and got sign-off before documenting it in Confluence</li>
+          <li>Wrote the story in JIRA and ran refinement with the Scrum team, including sprint refinements</li>
+          <li>Supported the sprint demo</li>
+          <li>Fed the outcome into the next Increment (PI) planning cycle</li>
+        </ul>
+      </section>
+
+      <section class="case-section" id="screenshots">
+        <h2>Screenshots</h2>
+        <div class="screenshot-gallery">
+          <figure class="case-screenshot">
+            <img src="../assets/projects/transaction-decisioning-api/API_Decisioning.png" alt="Feature summary slide for the Transaction Decisioning API showing the problem, PO approach, and rule-based vs AI-driven acceptance criteria">
+            <figcaption>Feature summary — problem, PO approach, and rule-based vs. AI-driven acceptance criteria</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Rule-Based vs. AI-Driven: How Acceptance Criteria Changes</h2>
+        <p>Since building this fix, I've thought through how the same problem would be approached with an AI-driven decisioning model — and how differently the acceptance criteria would need to be written.</p>
+        <h3>Rule-based (what I shipped)</h3>
+        <ul>
+          <li>Field set &rarr; rule excluded from decisioning, no exceptions</li>
+          <li>Field absent &rarr; existing behaviour fully preserved</li>
+          <li>End-to-end transaction outcome verified for every edge case</li>
+        </ul>
+        <h3>AI-driven (how I'd build it today)</h3>
+        <ul>
+          <li>Transactions are auto-approved or auto-declined either way — no change to the decision path</li>
+          <li>Every decision logged with a score (models trained on historic data to generate it), a threshold set by product/business, and approval or rejection applied based on that threshold</li>
+          <li>Top contributing factors logged for each decision, and the whole thing auditable</li>
+          <li>False positive rate (legitimate transactions declined) tracked as a product metric</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Key Artefacts</h2>
+        <ul>
+          <li>User story with edge-case-complete acceptance criteria</li>
+          <li>High-level and low-level technical design documents (Confluence)</li>
+          <li>JIRA story and sprint refinement notes</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Outcome / Impact</h2>
+        <p>Delivered a precise, edge-case-complete story and acceptance criteria for a rule fix in a live, regulated transaction decisioning system, with sign-off from tech lead and architecture before it reached the sprint. Demonstrates the acceptance-criteria discipline that kind of regulated environment demands, and how that same discipline extends into evaluating an AI-driven decisioning approach.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>What I Learned</h2>
+        <p>Working in a regulated decisioning system taught me that acceptance criteria are the real interface between product and compliance — every edge case has to be spelled out, because "obviously" isn't good enough when a rule change touches real transactions. Thinking through how I'd approach the same problem with an AI-driven model today reinforced that AI doesn't remove that discipline — it just moves it: instead of writing rule exceptions, you're defining what gets logged, what a threshold means, and who's accountable when the model is uncertain.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranya Selvaraj &middot; Built with purpose, not a template.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

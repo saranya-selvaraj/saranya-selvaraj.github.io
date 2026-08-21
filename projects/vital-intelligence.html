@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vital Intelligence — Passive Food Logging & Metabolic Awareness case study by Saranya Selvaraj">
+  <title>Vital Intelligence — Saranya Selvaraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">Saranya Selvaraj</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="case-study">
+    <div class="container fade-in">
+      <a href="../index.html#projects" class="back-link">&larr; Back to Portfolio</a>
+
+      <header class="case-study-header">
+        <span class="tag">AI Prototype</span>
+        <h1>Vital Intelligence — Passive Food Logging &amp; Metabolic Awareness</h1>
+        <p class="case-subnote">Concept stage &middot; Consumer wellness only &middot; Not a medical device</p>
+      </header>
+
+      <section class="case-section">
+        <h2>Overview</h2>
+        <p>Vital Intelligence is a concept for automatic food logging and personal metabolic awareness that removes manual tracking entirely. A wearable ring detects when the user starts eating, a camera silently captures the meal, and on-device AI identifies the food and tracks the body's biometric response over the next 90 minutes. Instead of real-time alerts, the user gets one calm, plain-language summary each evening.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>The Challenge</h2>
+        <p>Manual food tracking doesn't work for most people: around 80% give up within a month, memory-based logging rarely matches what was actually eaten, and without biometric context, neither users nor their dietitians can see how specific foods affect the body. The persona I designed around, Megan — a 38-year-old managing her weight who'd tried every food-diary app — summed up the problem: "I know I should track what I eat, but after a long day, I just can't face logging every meal." The challenge was to remove the logging effort entirely while still surfacing meaningful, personalised patterns, without turning the app into another source of notification fatigue.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Approach</h2>
+        <p>I led the product strategy and design for the concept:</p>
+        <ul>
+          <li>Started with calorie-tracking apps like MyFitnessPal as a reference point, then researched wearables such as Whoop and Oura and metabolic apps like Levels</li>
+          <li>Defined the primary persona — Megan, who'd tried and abandoned multiple food-diary apps — and mapped three supporting segments: metabolic-health seekers, general wellness users, and burned-out calorie trackers</li>
+          <li>Defined the core mechanism: a wearable detects the eating event via gesture and heart-rate signals, a camera captures the meal automatically, and on-device AI identifies the food and tracks a 90-minute biometric response window — styled visually on MyFitnessPal's familiar food-logging look and feel</li>
+          <li>Iterated the detection design away from discrete gate checks — since isolating individual signals like stress or exercise proved impractical — toward a continuous post-meal biometric window that builds a personal baseline over time, factoring in signals like stress, movement after a meal, and sleep score, and surfaces anything unusual as a narrative note or an action item depending on severity</li>
+          <li>Wrote a brief PRD and product story — personas, user stories, and a risk/mitigation table — not a full spec ready for engineering</li>
+          <li>Built a working prototype in Google AI Studio and Replit as part of Lenny's Buildathon</li>
+          <li>Interacted with dietitians to validate the concept, and peer-reviewed the prototype with fellow cohort members from my coursework</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Key Artefacts</h2>
+        <ul>
+          <li>Brief PRD and product story with persona, user stories, and problem framing</li>
+          <li>Product flow and system diagram — wearable &rarr; camera &rarr; on-device AI &rarr; biometric analysis &rarr; evening narrative</li>
+          <li>Risk and mitigation table covering detection false positives, image quality, connectivity, and metabolic-signal confidence</li>
+          <li>Working prototype built in Google AI Studio and Replit</li>
+          <li>Validation notes from dietitian conversations and peer review with coursework cohort members</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Outcome / Impact</h2>
+        <p>Built a working prototype in Google AI Studio and Replit as part of Lenny's Buildathon. The concept replaces real-time alerts with a single evening narrative — for example, only flagging a repeated pattern after it's shown up three times, with a low-key suggestion to raise it with a dietitian rather than reacting to every meal. Demonstrates 0-to-1 product thinking in the consumer health domain, validated through dietitian conversations and peer review with my coursework cohort.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>What I Learned</h2>
+        <p>Designing around automatic detection instead of manual logging taught me that removing friction isn't just a UX problem — it shapes the whole product, from what the wearable needs to detect to how confident the system has to be before it says anything. I also learned to keep iterating past a working prototype: the original design used a set of discrete gate checks to rule out confounders, but on reflection those signals couldn't really be isolated cleanly, so I moved to a continuous post-meal baseline that factors in stress, movement, and sleep over time instead — a change the live prototype doesn't yet reflect. Talking to dietitians and getting peer feedback from my coursework cohort reinforced how valuable early validation is before investing further in a build.</p>
+      </section>
+
+      <section class="case-links">
+        <h2>Links</h2>
+        <div class="btn-group">
+          <a href="https://vital-intelligence.ai.studio" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">View Prototype</a>
+          <a href="https://www.loom.com/share/abd4ce507395400f8965f8f8378cb9de" class="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">Watch Demo</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranya Selvaraj &middot; Built with purpose, not a template.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

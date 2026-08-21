@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Agent Automation Pipeline case study by Saranya Selvaraj">
+  <title>AI Agent Automation Pipeline — Saranya Selvaraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">Saranya Selvaraj</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="case-study">
+    <div class="container fade-in">
+      <a href="../index.html#projects" class="back-link">&larr; Back to Portfolio</a>
+
+      <header class="case-study-header">
+        <span class="tag">Automation</span>
+        <h1>AI Agent Automation Pipeline</h1>
+      </header>
+
+      <section class="case-section">
+        <h2>Overview</h2>
+        <p>An n8n workflow where an AI agent generates a response to each incoming chat message, and the query and response are automatically logged to Google Sheets and sent by email. I built it as a hands-on prototype to demonstrate practical experience with AI-agent-driven automation — reflecting a broader interest in process and workflow automation that also shows up in my day-to-day work.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>The Challenge</h2>
+        <p>I wanted hands-on, practical experience building an AI-agent-driven workflow end-to-end, rather than just reading about how tools like n8n fit together. The goal was to prototype something simple but complete: an AI agent that responds to an incoming message, with that query and response automatically captured and shared — a small example of the automation thinking I already apply professionally.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Approach</h2>
+        <p>I designed and built the pipeline as a hands-on prototype:</p>
+        <ul>
+          <li>Set up a trigger to fire on each incoming chat message</li>
+          <li>Built the n8n workflow with an AI agent node to generate the response</li>
+          <li>Connected Google Sheets to automatically log each query and response as a new row</li>
+          <li>Integrated Gmail to send the query and response by email</li>
+        </ul>
+      </section>
+
+      <section class="case-section" id="screenshots">
+        <h2>Screenshots</h2>
+        <p>Full n8n workflow and Google Sheets integration — no public live demo available.</p>
+        <div class="screenshot-gallery">
+          <figure class="case-screenshot">
+            <img src="../assets/projects/n8n-pipeline/Assignment%2004%20-%20Saranya%20C50.png" alt="Full n8n automation workflow showing AI agent, Google Sheets, and Gmail nodes">
+            <figcaption>End-to-end n8n workflow — trigger, AI agent, and Sheets/Gmail logging</figcaption>
+          </figure>
+          <figure class="case-screenshot">
+            <img src="../assets/projects/n8n-pipeline/Assignment%2004_Screenshot_AppendRow_Saranya%20C50.png" alt="Google Sheets append row step in the n8n pipeline">
+            <figcaption>Google Sheets node — automated row creation with structured data capture</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Key Artefacts</h2>
+        <ul>
+          <li>Working n8n workflow (exportable JSON)</li>
+          <li>Process flow diagram documenting trigger → AI agent → Sheets/Gmail logging</li>
+          <li>Google Sheets template with automated column mapping</li>
+          <li>Gmail email templates with dynamic field insertion</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Outcome / Impact</h2>
+        <p>This is a proof-of-concept, not a measured production deployment — its purpose is to demonstrate hands-on experience with AI-agent-driven automation. That same interest in process automation shows up in my day-to-day work: I've automated document update workflows using Power Automate, cutting spec-update time from 20+ minutes to under 10 minutes per document — meaningful savings given updates typically needed to be repeated across specs for multiple products. (See the <a href="vendor-onboarding-workflow.html">Vendor Onboarding Workflow</a> case study for another example of that same automation thinking applied at work.)</p>
+      </section>
+
+      <section class="case-section">
+        <h2>What I Learned</h2>
+        <p>Building this prototype gave me hands-on experience with how an AI agent plugs into a no-code automation tool like n8n — wiring up a trigger, an AI agent, and automatic logging and notification into one simple pipeline. Even at this small scope, it reinforced why I'm drawn to process automation as a product domain. It's the same thinking I bring to automation work at my job.</p>
+      </section>
+
+      <section class="case-links">
+        <h2>Links</h2>
+        <div class="btn-group">
+          <a href="#screenshots" class="btn btn-primary btn-sm">View Screenshots</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranya Selvaraj &middot; Built with purpose, not a template.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
