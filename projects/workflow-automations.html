@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Workflow automation work by Saranya Selvaraj: a Salesforce vendor-onboarding proof of concept from her Technical Product Owner role, and a hands-on n8n AI-agent pipeline.">
+  <title>Workflow Automations &middot; Saranya Selvaraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">Saranya Selvaraj</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="case-study">
+    <div class="container fade-in">
+      <a href="../index.html#projects" class="back-link">&larr; Back to Portfolio</a>
+
+      <header class="case-study-header">
+        <span class="tag">Automation</span>
+        <h1>Workflow Automations</h1>
+        <p class="case-subnote">Two pieces of workflow-automation work: one real Technical Product Owner engagement, one hands-on prototype</p>
+      </header>
+
+      <section class="case-section">
+        <p>Process and workflow automation is a product domain I keep coming back to. Below are two examples: a Salesforce proof of concept I scoped as a Technical Product Owner to replace a manual onboarding process, and an n8n pipeline I built from scratch to get hands-on with AI-agent automation.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Vendor Onboarding Workflow</h2>
+        <p class="case-subnote">Investment Research Services &middot; Real TPO work</p>
+        <p>The Investment Research Services team managed relationships with external research vendors through a manual process built on spreadsheets and emails. There was no structured, trackable way to ensure due diligence steps were completed consistently, and no audit trail for a given vendor relationship. As Technical Product Owner, I gathered the requirements and scoped a Salesforce proof of concept to fix that.</p>
+        <ul>
+          <li>Framed the need as a user story: vendors onboarded through a structured, tracked workflow, so due diligence is consistent and every relationship has a full audit trail</li>
+          <li>Gathered the onboarding requirements from the research team</li>
+          <li>Configured the POC in Salesforce: custom objects for vendor records, Lightning screens for data capture, process automation for step progression, and case management for workflow tracking</li>
+          <li>Scoped where AI-driven screening (sanctions lists, watchlists, adverse media) could extend the workflow, with sample acceptance criteria that keep a compliance officer, not the AI, in control of any flagged match</li>
+        </ul>
+        <p>The result was a working POC that replaced the spreadsheet-and-email process with a structured, tracked workflow, giving the team a consistent due diligence process and a full audit trail for every vendor relationship. It also showed how a human-in-the-loop AI screening step could slot in later without changing who is accountable for the decision.</p>
+        <div class="screenshot-gallery">
+          <figure class="case-screenshot">
+            <img src="../assets/projects/vendor_onboarding/Vendor_Onboarding.png" alt="Feature summary slide for the Vendor Onboarding Workflow showing context, the user story, what the Salesforce POC established, and where AI adds value today">
+            <figcaption>Feature summary: context, user story, Salesforce POC, and where AI adds value</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="n8n">
+        <h2>AI Agent Automation Pipeline (n8n)</h2>
+        <p class="case-subnote">Hands-on prototype</p>
+        <p>An n8n workflow where an AI agent generates a response to each incoming chat message, and the query and response are automatically logged to Google Sheets and sent by email. I built it end to end to get practical experience wiring an AI agent into a no-code automation tool, rather than just reading about how the pieces fit together.</p>
+        <ul>
+          <li>A trigger fires on each incoming chat message</li>
+          <li>An AI agent node (Google Gemini chat model, with a web-search tool and simple memory) generates the response</li>
+          <li>A Google Sheets node appends each query and response as a new row</li>
+          <li>A Gmail node sends the query and response on by email</li>
+        </ul>
+        <p>This is a proof of concept, not a measured production deployment. The same automation thinking shows up in my day-to-day work: I automated recurring document-spec updates with Microsoft Power Automate, cutting per-document update time from 20+ minutes to under 10, which added up given the updates had to be repeated across specs for multiple products.</p>
+        <div class="screenshot-gallery">
+          <figure class="case-screenshot">
+            <img src="../assets/projects/n8n-pipeline/Assignment%2004%20-%20Saranya%20C50.png" alt="Full n8n automation workflow showing the chat trigger, AI agent, Google Gemini chat model, web search tool, memory, Google Sheets append-row node, and Gmail send node">
+            <figcaption>End-to-end n8n workflow: trigger, AI agent, and Sheets / Gmail logging</figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranya Selvaraj &middot; Built with purpose, not a template.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
