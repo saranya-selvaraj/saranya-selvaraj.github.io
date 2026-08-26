@@ -56,7 +56,7 @@
         <ul>
           <li><strong>Phase 1: Teardown.</strong> Mapped every flow in the app end to end (onboarding, scan and score, recommendations, and the return visit), tagging each step as a smooth or friction moment. Ran a competitive scan against Open Food Facts, Think Dirty, Nutrasafe, and the NHS Eatwell Guide, split the user base into five segments, and consolidated the findings into one problem list, each item carrying a confidence level and source.</li>
           <li><strong>Phase 2: Research.</strong> Ran 5 user interviews, a 54-response survey, and a synthesis of 150+ reviews from Reddit, Trustpilot, and the App Store. Built two personas, Susan and Conor, and tested the Phase 1 hypotheses against the evidence, confirming some and dropping others (weekly insights and rewards, for instance, turned out not to matter). Scored the surviving problems on persona impact, frequency, and severity to land on a single P0.</li>
-          <li><strong>Phase 3: Solution.</strong> Brainstormed six solutions against the root causes: oversimplified scoring, disregarding individual needs, and missing detail on factors like food processing. RICE-scored them and took the top three forward: show the food-processing level on the product detail pane, add an AI explanation of why a product scored the way it did, and let users set a goal so the score is read in that context. Built an interactive prototype in Google AI Studio covering all three, then defined the success metrics and a pitfalls-and-mitigations table around them.</li>
+          <li><strong>Phase 3: Solution.</strong> Brainstormed six solutions against the root causes: oversimplified scoring, disregarding individual needs, and missing detail on factors like food processing. RICE-scored them and took two forward as P0: a food-processing indicator on the scan result screen, and a lightweight goal profile that reinterprets Yuka's existing score through the user's priorities, surfaced as a "what this means to you" panel. Sequenced the food-processing indicator first (higher RICE, lower effort, reaches everyone) with the profile as phase 2, gated on a privacy review and one open UI question. Built an interactive prototype in Google AI Studio, then wrote the PRD: user stories, P0 to P2 requirements with acceptance criteria, success metrics, a risks-and-mitigations table, and the open questions blocking design.</li>
         </ul>
       </section>
 
@@ -73,19 +73,14 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Indicate food-processing level on the detail pane</th>
+                <th scope="row">Food-processing indicator on the scan result screen</th>
                 <td>13.5</td>
-                <td>Built into the prototype</td>
+                <td>P0, ships first</td>
               </tr>
               <tr>
-                <th scope="row">AI clarification of why a product scored as it did</th>
+                <th scope="row">Goal profile plus a "what this means to you" reading of the score</th>
                 <td>9</td>
-                <td>Built into the prototype</td>
-              </tr>
-              <tr>
-                <th scope="row">Goal-based personalisation beyond diet preferences</th>
-                <td>9</td>
-                <td>Prototyped as opt-in scenarios</td>
+                <td>P0, phase 2 after food processing</td>
               </tr>
               <tr>
                 <th scope="row">Pull health metrics from connected devices</th>
@@ -94,8 +89,8 @@
               </tr>
               <tr>
                 <th scope="row">Rework the core scoring algorithm</th>
-                <td>Moonshot</td>
-                <td>Deferred, changes a core capability</td>
+                <td>4</td>
+                <td>Deferred, personalisation reinterprets the score instead</td>
               </tr>
               <tr>
                 <th scope="row">Ingredient-hazard dashboard</th>
@@ -109,7 +104,7 @@
 
       <section class="case-section" id="screenshots">
         <h2>Prototype</h2>
-        <p>The prototype shows the same product, a tomato-sauce bean tin scoring 84/100, read three ways: with no profile set, against a weight-loss goal, and against a muscle-building goal. Each personalised view adds a plain-language "what this means to you" panel and a food-processing indicator.</p>
+        <p>The prototype shows the same product, a tomato-sauce bean tin scoring 84/100, read three ways: with no profile set, against a weight-loss goal, and against a muscle-building goal. Each personalised view adds a plain-language "what this means to you" panel alongside the food-processing indicator. It walks through the phase-2 personalisation end to end; in the delivery plan the food-processing indicator ships on its own first.</p>
         <div class="screenshot-gallery">
           <figure class="case-screenshot">
             <img src="../assets/projects/yuka/yuka-01-scenarios.png" alt="Prototype home screen listing three scenarios: not personalised, personalised for weight loss, and personalised for muscle building, next to a prompt to set up a profile">
@@ -143,19 +138,19 @@
           <li>Research pack: 5 interviews, a 54-response survey, 150+ synthesised reviews, and two personas</li>
           <li>P0 problem statement with a priority / impact / frequency scoring model</li>
           <li>Solution brainstorm and RICE prioritisation</li>
-          <li>PRD with high-level user stories, success metrics, and a risks-and-mitigations table</li>
+          <li>PRD: user stories, P0 to P2 requirements with acceptance criteria, non-goals, success metrics, a risks-and-mitigations table, and blocking open questions</li>
           <li>Interactive prototype built in Google AI Studio</li>
         </ul>
       </section>
 
       <section class="case-section">
         <h2>Outcome / Impact</h2>
-        <p>Turned an open-ended "analyse this app" brief into one prioritised bet backed by primary research: make scoring transparent and contextual rather than trying to rebuild the scoring algorithm. The prototype demonstrates the direction end to end, and success is framed around quarterly retention of free-tier users, with engagement and app-store sentiment as guardrails so a confusing rollout would show up early.</p>
+        <p>Turned an open-ended "analyse this app" brief into a prioritised, phased bet backed by primary research: make the score transparent and contextual by reinterpreting it, not rebuilding it. The food-processing indicator ships first; the goal profile follows once a privacy review of health-profile data (Yuka operates in the EU) and an open "clear verdict versus explanation only" UI question are resolved. Success is measured on profile completion and personalised-score engagement as leading indicators and quarterly free-tier retention as the key metric, with a holdout group so personalisation's effect can be told apart from the food-processing change shipping alongside it.</p>
       </section>
 
       <section class="case-section">
         <h2>What I Learned</h2>
-        <p>The research changed my mind. Going in, I assumed the gap was re-engagement features like weekly insights; the interviews and survey said people already came back often enough, and the real damage was to trust in the core score. It also pushed me toward the lower-risk option: the moonshot was to rebuild the scoring algorithm, but transparency plus an AI explanation addressed most of the frustration for a fraction of the effort and risk. Writing the pitfalls table was a useful check in itself, the biggest risk turned out to be simply that users never scroll far enough to see the new information.</p>
+        <p>The research changed my mind. Going in, I assumed the gap was re-engagement features like weekly insights; the interviews and survey said people already came back often enough, and the real damage was to trust in the core score. That pushed me toward the lower-risk option: rebuilding the scoring algorithm was the moonshot, but reinterpreting the existing score against a user's goals addressed most of the frustration for far less effort. Scoping it properly surfaced what the first pass missed, that health-profile data is sensitive under EU rules and needs a privacy review before any onboarding is built, and that shipping personalisation next to the food-processing change means planning a holdout group up front so the two effects can be told apart.</p>
       </section>
 
       <section class="case-links">
