@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Going paperless: removing a wet-signature dependency from an insurance new business journey without opening a compliance gap. A Technical Product Owner case study by Saranya Selvaraj.">
+  <title>Going Paperless &middot; Saranya Selvaraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">Saranya Selvaraj</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="case-study">
+    <div class="container fade-in">
+      <a href="../index.html#projects" class="back-link">&larr; Back to Portfolio</a>
+
+      <header class="case-study-header">
+        <span class="tag">Product Ownership</span>
+        <h1>Going Paperless: Removing Signature from a New Business Journey</h1>
+        <p class="case-subnote">Insurance &middot; Real TPO work, from my time as Technical Product Owner</p>
+      </header>
+
+      <section class="case-section">
+        <div class="case-table-wrap">
+          <table class="case-table case-table-summary">
+            <tbody>
+              <tr>
+                <th scope="row">Role</th>
+                <td>Owned requirements, cross-functional trade-offs and delivery planning for the new business customer journey</td>
+              </tr>
+              <tr>
+                <th scope="row">Trigger</th>
+                <td>Customers had to sign and return the proposal form before a new policy could be issued, a hard dependency that slowed down document issuance</td>
+              </tr>
+              <tr>
+                <th scope="row">Teams involved</th>
+                <td>Sales, operations, compliance, underwriting, broker channel, UX, tech/scrum team</td>
+              </tr>
+              <tr>
+                <th scope="row">My contribution</th>
+                <td>Mapped the As-Is and To-Be journeys across channels, worked through conflicting cross-functional requirements, and structured the documentation backlog across 4 documents and 14 products so delivery could run smoothly</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>The Problem</h2>
+        <p>New policy documents couldn't be issued until a customer had signed and returned the proposal form. That one dependency caused a chain of downstream friction. Sales had to chase unreturned forms, operations had to manually check that the right signatures (individual or joint) were in place and re-open the loop whenever validation failed, and the business was carrying ongoing print and postage costs on top of it all, while the operations team's capacity to handle this manual step was already limited. For an otherwise digital new business journey, this was the one analogue step still holding everything up.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Why It Wasn't a Simple Removal</h2>
+        <p>Taking the signature out was a key milestone in digitising the new business journey and an obvious win for customer experience. But a signature wasn't just a formality, it was the evidence that a customer had accepted the contract. Removing it meant finding another way to establish and evidence that acceptance that would actually hold up legally, rather than just moving the same friction somewhere else.</p>
+        <p>I was new to the organisation at the time, so I had to get up to speed quickly: learn the insurance domain fundamentals, understand the new business journey end to end, and get into the detail of customer documentation and the legal and compliance risk that came with changing how acceptance was evidenced.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>How I Approached It</h2>
+        <ul>
+          <li><strong>Mapped the As-Is journey first.</strong> I used existing Confluence documentation and business process maps, and opened test policies through internal systems and the customer-facing website myself, so I had a firsthand, accurate picture rather than relying only on what had already been written down.</li>
+          <li><strong>Validated it with SMEs across every function it touched.</strong> I ran a series of sessions with SMEs across sales, operations, compliance, underwriting, broker, UX and tech to validate what I'd mapped, then hosted a wider workshop to walk through and shape the proposed changes together.</li>
+          <li><strong>Co-designed the To-Be process.</strong> The future-state process was built together with the group rather than handed down, which mattered given how many downstream teams the change actually touched.</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Where Requirements Conflicted, and What I Weighed</h2>
+        <p>Taking a manual control out of a regulated process tends to surface exactly this kind of conflict, and someone close to both the business and the delivery team needs to work through it, not just document it. One example: sales wanted an automated payment confirmation check before documents were released, as a replacement control. Technically that was a heavy lift, since it meant real-time integration with payment systems that didn't exist in the current architecture. Compliance, on the other hand, felt the sales process itself needed to change to align with upcoming Consumer Protection Code (CPC) requirements, which would remove the need for that automated check in the first place.</p>
+        <p>A few other things shaped how I approached the change more broadly:</p>
+        <ul>
+          <li><strong>Evidencing contract acceptance without a signature.</strong> A signature is simple, durable evidence. Taking it away meant the To-Be process itself had to produce an equivalent, auditable record of customer acceptance. That's not just a UX improvement, it's a compliance-grade artefact.</li>
+          <li><strong>Build versus process change.</strong> I weighed an automated, real-time check against a process-level control that didn't need any new system integration, and leaned toward the lower-risk, lower-effort option where it satisfied the same regulatory need.</li>
+          <li><strong>The scale of the documentation change.</strong> This was never a single document update. It was 4 documents across 14 products, each potentially needing different wording, so the documentation review had to be structured and tracked like a proper backlog rather than handled ad hoc.</li>
+          <li><strong>Tooling to stop documentation becoming the bottleneck.</strong> With that many document variants, manually re-checking common updates across products would have been a real bottleneck. I automated the recurring updates to the specification docs using Microsoft Power Automate, which kept the functional spec artefacts ready and reviewed ahead of each sprint instead of holding it up.</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Sequencing the Backlog for a Smooth Delivery</h2>
+        <p>The decision on how to phase the wider rollout, which products would go first and when, was a collaborative one made together with business, strategy and tech. That wasn't something I owned on my own.</p>
+        <p>What I did own was sequencing the backlog underneath it. That meant getting each product ready in the right order, with the required doc spec changes done and slotted into the right sprints, so the dev team could pick the work up smoothly without waiting on anything. Because everything was reviewed, planned and slotted ahead of time, there wasn't much rework once development started.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Delivery</h2>
+        <p>Once the To-Be process and documentation approach were agreed through the underwriting workshops, I built the initial backlog with tickets for the first set of products chosen to go live. Document updates took longer than expected on the first pass, but that experience fed straight into better-calibrated estimates from the scrum team for phase two. We delivered the first two products, kept an eye on them in production for a few weeks to make sure the new evidencing approach held up in practice, and only then moved on to the rest.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Outcome</h2>
+        <p>The signature dependency came out of the new business journey without opening up a compliance gap. Customer acceptance was now evidenced through the redesigned process rather than a returned form. Sales stopped chasing signed forms, operations' manual verification step disappeared, and the print and postage costs on new business documents went away. Because the backlog was sequenced and planned well ahead of each sprint, the team could move through the products with minimal rework, which made the later, larger rollout far less risky than it could have been.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>What I'd Highlight</h2>
+        <p>This one was as much about facilitation and judgment as it was about process design. Getting compliance, sales and operations to agree on one To-Be process when their proposed solutions actively conflicted, protecting a legally sensitive control while still removing genuine friction, and using automation where it actually removed a bottleneck rather than for its own sake.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranya Selvaraj &middot; Built with purpose, not a template.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

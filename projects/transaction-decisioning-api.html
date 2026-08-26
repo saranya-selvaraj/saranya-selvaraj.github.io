@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Transaction Rule API — untangling a cross-team decisioning bug: a Technical Product Owner case study by Saranya Selvaraj on root-causing a mis-firing payment rule and negotiating a hybrid fix.">
-  <title>Transaction Rule API — Saranya Selvaraj</title>
+  <meta name="description" content="Untangling a cross-team decisioning bug: a Technical Product Owner case study by Saranya Selvaraj on root-causing a mis-firing payment rule and negotiating a hybrid fix.">
+  <title>Untangling a Cross-Team Decisioning Bug &middot; Saranya Selvaraj</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
@@ -35,7 +35,7 @@
 
       <header class="case-study-header">
         <span class="tag">Product Ownership</span>
-        <h1>Transaction Rule API — Untangling a Cross-Team Decisioning Bug</h1>
+        <h1>Untangling a Cross-Team Decisioning Bug</h1>
         <p class="case-subnote">Payments API team &middot; Real TPO work, from my time as Technical Product Owner</p>
       </header>
 
@@ -71,7 +71,7 @@
 
       <section class="case-section">
         <h2>Understanding the Problem</h2>
-        <p>The existing rule capped how much a customer could pay via contactless card taps — a sensible fraud control on its own. But the same rule was also catching Digital Wallet payments, which shouldn't have been subject to that cap at all. Customers who'd already hit their contactless limit tried to pay by wallet instead, and were declined there too — forcing them back to chip-and-PIN at the terminal. For a payments business, that's friction at the worst possible moment: the point of sale. It showed up immediately in the wallet transaction numbers.</p>
+        <p>The existing rule capped how much a customer could pay via contactless card taps, which is a sensible fraud control on its own. But the same rule was also catching Digital Wallet payments, which shouldn't have been subject to that cap at all. Customers who'd already hit their contactless limit tried to pay by wallet instead, and were declined there too, forcing them back to chip-and-PIN at the terminal. For a payments business, that's friction at the worst possible moment: the point of sale. It showed up immediately in the wallet transaction numbers.</p>
       </section>
 
       <section class="case-section">
@@ -82,8 +82,8 @@
             <thead>
               <tr>
                 <th scope="col"><span class="visually-hidden">Consideration</span></th>
-                <th scope="col">Option A — Suppression flag</th>
-                <th scope="col">Option B — API redesign</th>
+                <th scope="col">Option A: Suppression flag</th>
+                <th scope="col">Option B: API redesign</th>
               </tr>
             </thead>
             <tbody>
@@ -99,8 +99,8 @@
               </tr>
               <tr>
                 <th scope="row">Trade-off</th>
-                <td>Fast to ship, but a tactical patch — more flags over time, and it doesn't reduce coupling to the rules engine</td>
-                <td>Aligned with the strategic tech direction, but the estimate was significantly higher — real risk of missing the fix window entirely</td>
+                <td>Fast to ship, but a tactical patch: more flags over time, and it doesn't reduce coupling to the rules engine</td>
+                <td>Aligned with the strategic tech direction, but the estimate was significantly higher, with a real risk of missing the fix window entirely</td>
               </tr>
             </tbody>
           </table>
@@ -112,11 +112,11 @@
         <h2>What I Weighed as Tech PO</h2>
         <p>Beyond the two proposals on the table, a few technical and delivery considerations shaped the call:</p>
         <ul>
-          <li><strong>API contract impact:</strong> A flag-based suppression path meant one more conditional layer in an already rules-heavy decisioning flow — worth being honest about as tech debt rather than pretending it was free.</li>
-          <li><strong>Cross-service dependency:</strong> The fix wasn't self-contained in our API — it depended on a change in the rules engine, owned by a different team with its own backlog, priorities, and release cycle. That's a delivery risk as much as a technical one.</li>
-          <li><strong>Traceability of suppressed decisions:</strong> In payments, suppressing a decisioning rule isn't something you do quietly — it needed to be traceable, so support and compliance could see exactly when and why a rule was bypassed for a transaction.</li>
+          <li><strong>API contract impact:</strong> A flag-based suppression path meant one more conditional layer in an already rules-heavy decisioning flow, worth being honest about as tech debt rather than pretending it was free.</li>
+          <li><strong>Cross-service dependency:</strong> The fix wasn't self-contained in our API; it depended on a change in the rules engine, owned by a different team with its own backlog, priorities, and release cycle. That's a delivery risk as much as a technical one.</li>
+          <li><strong>Traceability of suppressed decisions:</strong> In payments, suppressing a decisioning rule isn't something you do quietly; it needed to be traceable, so support and compliance could see exactly when and why a rule was bypassed for a transaction.</li>
           <li><strong>Release sequencing:</strong> The rules engine and our API didn't ship on the same cadence, so production rollout had to be sequenced deliberately rather than assumed to land together.</li>
-          <li><strong>Test coverage across systems:</strong> A change touching two systems needed end-to-end scenario coverage, not just unit tests on our side — and edge cases wouldn't be visible until the rules engine's output was actually in hand.</li>
+          <li><strong>Test coverage across systems:</strong> A change touching two systems needed end-to-end scenario coverage, not just unit tests on our side, and edge cases wouldn't be visible until the rules engine's output was actually in hand.</li>
           <li><strong>Speed vs. architectural direction:</strong> Picking Option B outright risked the fix window; picking Option A outright meant quietly accepting more coupling and technical debt. A hybrid kept the fix on schedule while banking the redesign as a tracked commitment rather than losing it entirely.</li>
         </ul>
       </section>
@@ -128,19 +128,19 @@
 
       <section class="case-section">
         <h2>Delivery: Sequencing Across Two Teams</h2>
-        <p>The rules engine change turned out not to be a small dependency — it needed to go into another team's backlog as its own feature, with their own PO, developers, and QA. I flagged this as a risk early and worked to get it prioritised on their side, keeping business and architects informed as the dependency and its risk evolved.</p>
+        <p>The rules engine change turned out not to be a small dependency. It needed to go into another team's backlog as its own feature, with their own PO, developers, and QA. I flagged this as a risk early and worked to get it prioritised on their side, keeping business and architects informed as the dependency and its risk evolved.</p>
         <ul>
-          <li><strong>Sprints 1–2:</strong> Sequenced our own stories so the changes within our team's control shipped in the first two sprints, while the rules team worked their decisioning updates in parallel.</li>
+          <li><strong>Sprints 1 and 2:</strong> Sequenced our own stories so the changes within our team's control shipped in the first two sprints, while the rules team worked their decisioning updates in parallel.</li>
           <li><strong>Sprint 3:</strong> Our side was fully built and automation tests were ready, waiting on the rules engine deliverable.</li>
           <li><strong>Sprint 4:</strong> Rules engine changes landed early in the sprint, unblocking full end-to-end testing.</li>
-          <li><strong>Sprint 5:</strong> Held back 30% of capacity as a deliberate buffer — for edge cases and any bugs surfacing from the rules engine integration, rather than assuming a clean handoff.</li>
+          <li><strong>Sprint 5:</strong> Held back 30% of capacity as a deliberate buffer for edge cases and any bugs surfacing from the rules engine integration, rather than assuming a clean handoff.</li>
         </ul>
         <p>Demo went well and business signed off. Production deployment still needed care: our release cycle and the rules engine's didn't run on the same schedule, so go-live had to be synced across both to land on time.</p>
       </section>
 
       <section class="case-section">
         <h2>Outcome</h2>
-        <p>The fix shipped on schedule, wallet decline rates recovered, and the cross-team dependency that could easily have blown the timeline was managed proactively rather than discovered late. Just as importantly, the underlying coupling to the rules engine didn't disappear once the fire was out — I got the microservices redesign written into the next PI's backlog as a tracked initiative, rather than letting a tactical fix quietly become the permanent architecture.</p>
+        <p>The fix shipped on schedule, wallet decline rates recovered, and the cross-team dependency that could easily have blown the timeline was managed proactively rather than discovered late. Just as importantly, the underlying coupling to the rules engine didn't disappear once the fire was out. I got the microservices redesign written into the next PI's backlog as a tracked initiative, rather than letting a tactical fix quietly become the permanent architecture.</p>
       </section>
 
       <section class="case-section">
