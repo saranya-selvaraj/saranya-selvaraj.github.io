@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PO Backlog Agent by Saranya Selvaraj: a working two-agent RAG system that turns a messy initiative into a structured EPIC, then decomposes it into Features and Stories with acceptance criteria.">
+  <title>PO Backlog Agent &middot; Saranya Selvaraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">Saranya Selvaraj</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="case-study">
+    <div class="container fade-in">
+      <a href="../index.html#projects" class="back-link">&larr; Back to Portfolio</a>
+
+      <header class="case-study-header">
+        <span class="tag">Agentic AI</span>
+        <h1>PO Backlog Agent: From Raw Initiative to Structured Backlog</h1>
+        <p class="case-subnote">Independent build &middot; Two-agent RAG system &middot; Live on Streamlit</p>
+      </header>
+
+      <section class="case-section">
+        <h2>Overview</h2>
+        <p>PO Backlog Agent is a working sequential-agent system that takes a messy, unstructured initiative (a chunk of meeting notes, a ticket, a business-case excerpt) and turns it into a structured EPIC, then grounds itself in a small knowledge base to decompose that EPIC into Features and Stories with acceptance criteria. I built it as a proof of concept to learn agentic architecture hands-on: retrieval-augmented generation, tool calling, sequential-agent coordination, and structured output, applied to a job I actually do.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>The Problem</h2>
+        <p>Turning a roadmap initiative into a detailed backlog is slow, manual work: synthesising scattered inputs into an EPIC, digging through internal knowledge bases for context, then decomposing the result into Features and Stories with acceptance criteria. Two of those steps, the synthesis and the decomposition, are a good fit for an agent. The rest (running the meeting, the SME conversations, the technical design, the sign-off) genuinely needs human judgment and is deliberately left out.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Architecture</h2>
+        <p>The system runs a full <strong>Retrieve, Reason, Decide, Act</strong> loop across two agents with distinct responsibilities and toolsets:</p>
+        <ul>
+          <li><strong>Agent 1, Synthesiser.</strong> Takes the raw initiative text and drafts a structured EPIC (title, problem statement, business value, in and out of scope). Pure generation, no tools, grounded strictly in the input.</li>
+          <li><strong>Agent 2, Decomposer.</strong> Retrieves the top relevant chunks from the knowledge base via RAG, decomposes the EPIC into 2 to 5 Features, then each Feature into Stories with Given/When/Then acceptance criteria, and optionally writes the whole tree back to a mock backlog API through a tool call.</li>
+        </ul>
+        <p>Two agents rather than one keeps each prompt focused and lets every stage be inspected and demoed on its own. Agent 2's retrieval and write-back are exposed as function-calling tools, so the agent decides when to call them rather than the orchestration code forcing a fixed sequence.</p>
+        <div class="screenshot-gallery">
+          <figure class="case-screenshot">
+            <img src="../assets/projects/Po_Backlog_Agent/po_backlog_agent_architecture_diagram.png" alt="Architecture diagram: raw initiative text and a three-document knowledge base feed a processing layer of two agents; Agent 1 synthesises an EPIC and hands off to Agent 2, which queries the knowledge base and can call retrieve_context and create_backlog_item tools; output goes to a Streamlit UI and a FastAPI mock backlog API backed by a JSON store">
+            <figcaption>Two agents, a RAG knowledge base, and two tools Agent 2 can choose to call</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section" id="screenshots">
+        <h2>Walkthrough</h2>
+        <p>The live app runs the whole flow from a single pasted paragraph in about 15 to 30 seconds, showing each stage so the grounding is inspectable rather than hidden.</p>
+        <div class="screenshot-gallery">
+          <figure class="case-screenshot">
+            <img src="../assets/projects/Po_Backlog_Agent/poa-01-initiative.png" alt="Streamlit app with a messy multi-person meeting transcript pasted into the Initiative field, discussing a pivot to ultra-processing visibility, and a Generate button">
+            <figcaption>Input: a raw meeting transcript, the kind of unstructured note a PO actually starts from</figcaption>
+          </figure>
+          <figure class="case-screenshot">
+            <img src="../assets/projects/Po_Backlog_Agent/poa-02-epic.png" alt="Agent 1 output: a structured EPIC titled Ultra-Processing Visibility Feature with problem statement, business value, and in-scope and out-of-scope lists">
+            <figcaption>Agent 1: a structured EPIC with all five fields populated and grounded in the input</figcaption>
+          </figure>
+          <figure class="case-screenshot">
+            <img src="../assets/projects/Po_Backlog_Agent/poa-03-retrieved-context.png" alt="Retrieved context panel showing three knowledge-base chunks with source document names and similarity scores, passed to the Features step">
+            <figcaption>Agent 2: the knowledge-base chunks retrieved for this EPIC, shown with source and score</figcaption>
+          </figure>
+          <figure class="case-screenshot">
+            <img src="../assets/projects/Po_Backlog_Agent/poa-04-feature-stories.png" alt="A Feature expanded into its Why and What description and a list of Stories, each in As a / I want / so that form with checkmarked Given/When/Then acceptance criteria">
+            <figcaption>Agent 2: each Feature broken into Stories with Given/When/Then acceptance criteria</figcaption>
+          </figure>
+          <figure class="case-screenshot">
+            <img src="../assets/projects/Po_Backlog_Agent/poa-05-rag-grounded-feature.png" alt="A Feature titled Secure Server-Side Token Verification whose description cites the Gateway Token Verification Policy and whose tech notes say it follows Policy 5, from a second run on a JIRA bug ticket">
+            <figcaption>A second run on a bug ticket: this Feature and its tech notes cite a retrieved policy doc, which is the proof RAG is load-bearing, not decoration</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>What It Demonstrates</h2>
+        <ul>
+          <li>Retrieval-augmented generation grounded in a real, if small, knowledge base, with retrieval visible in the UI and verified by swapping the context and watching the Features change</li>
+          <li>Sequential-agent coordination with a clean handoff between a synthesis agent and a decomposition agent</li>
+          <li>Tool and function calling for both context retrieval and write-back to an API</li>
+          <li>Structured output generation with validation, so EPIC, Feature and Story shapes stay predictable and parseable</li>
+          <li>Deliberate scoping: recognising which steps of a real workflow suit agentic automation and which need human judgment</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Deliberately Human-Only</h2>
+        <p>An automation-fit analysis for the project drew a hard line around the steps that stay human, by design rather than by limitation:</p>
+        <ul>
+          <li>Running the initiative meeting and the SME conversations that surface the real intent</li>
+          <li>High-level and low-level technical design</li>
+          <li>Any sign-off, approval, or governance workflow, and version tracking of requirements after sign-off</li>
+          <li>Multi-turn conversational refinement, a single-pass draft per stage is enough for the POC</li>
+          <li>Real JIRA, Confluence, or AHA integration, the write-back target is a mock FastAPI service</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Tech Stack</h2>
+        <ul>
+          <li><strong>Reasoning and tool calling:</strong> Groq API (LLaMA 3.3 70B), OpenAI-compatible, free tier</li>
+          <li><strong>Embeddings:</strong> local sentence-transformers (all-MiniLM-L6-v2), no API key or rate limit</li>
+          <li><strong>Vector store:</strong> Chroma, local and file-backed</li>
+          <li><strong>Mock backlog API:</strong> FastAPI with four endpoints (create epic, feature, story, and read the nested tree)</li>
+          <li><strong>UI:</strong> Streamlit</li>
+        </ul>
+        <p>Everything except the LLM call itself runs locally, and there are no paid dependencies. That was a deliberate resilience choice against third-party quota changes, not just a cost one.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>What I Learned</h2>
+        <p>The hardest part was not the wiring, it was the scoping: being honest about which parts of my own backlog workflow an agent should touch and which it should stay out of. Building it also changed how I think about RAG in a product: retrieval has to be inspectable and testable, not assumed, so I surfaced the retrieved chunks in the UI and checked that changing them actually changed the output. And splitting the work across two small agents with narrow toolsets, rather than one large prompt, made each stage far easier to reason about, debug, and show.</p>
+      </section>
+
+      <section class="case-links">
+        <h2>Links</h2>
+        <div class="btn-group">
+          <a href="https://pobacklogagent-ea3ppwd5whh2eleq4tzzfa.streamlit.app/" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Open the Live App</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranya Selvaraj &middot; Built with purpose, not a template.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
