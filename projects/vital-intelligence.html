@@ -127,16 +127,23 @@
       </section>
 
       <section class="case-section">
-        <h2>Nothing Gets Flagged Without Good Reason</h2>
-        <p>For the first two to three weeks the app observes and builds a personal baseline before it surfaces any metabolic pattern. After that, a biometric response is only raised in the narrative if it clears a set of gates designed to strip out noise:</p>
-        <ul>
-          <li>The eating event was confirmed as a real meal, not random activity</li>
-          <li>Exercise or movement after the meal is measured and accounted for</li>
-          <li>Stress signals picked up by the wearable are flagged for the user to confirm, and the app learns how stress typically shows up for that person</li>
-          <li>Snacking and grazing in the hours after a meal is included, not ignored</li>
-          <li>Confounders like poor sleep, feeling unwell or heavy caffeine set the window aside rather than drawing a conclusion from it</li>
-        </ul>
-        <p>Once the baseline is set, the app tracks what is routine for that user and only surfaces what genuinely deviates, relative to their own habits and health goals.</p>
+        <h2>Metabolic Awareness, Honestly Scoped</h2>
+        <p>After each eating event the wearable tracks heart rate, HRV and skin temperature for 90 minutes. The previous night's sleep score is loaded at the start of the day and used to put those readings in context. Every meal's response is compared against the user's own baseline for that meal type, not against population averages, and the app spends the first two to three weeks building that baseline before it surfaces anything.</p>
+        <p>The signals are proxies, and the write-up says so plainly:</p>
+        <div class="case-table-wrap">
+          <table class="case-table">
+            <thead>
+              <tr><th>Signal</th><th>What it might mean, and the honest uncertainty</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Heart rate elevation</th><td>A gradual post-meal rise is known physiology, but whether its size reliably separates meal types at the individual level is uncertain, and caffeine and alcohol muddy it.</td></tr>
+              <tr><th>HRV suppression</th><td>Happens during digestion, but also from stress, poor sleep, alcohol and illness. Separating the causes from wearable data alone is genuinely hard.</td></tr>
+              <tr><th>Skin temperature</th><td>Reflects the thermic effect of food, and protein-heavy meals produce more heat, but the signal is subtle and individual variation is high.</td></tr>
+              <tr><th>Prior night's sleep score</th><td>Poor sleep suppresses HRV and raises resting heart rate the next day. Used as a confidence modifier, not a blocking gate.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Because of that, the app only raises a pattern once it has been seen repeatedly against a stable personal baseline. Low-confidence or confounded windows are set aside rather than turned into advice.</p>
       </section>
 
       <section class="case-section">
@@ -226,13 +233,13 @@
           <li>How accurate is eating-event detection from a wrist gesture, and how badly does eating while walking break it?</li>
           <li>Will people adopt a wearable with a camera at all?</li>
         </ul>
-        <p>Scoping this taught me to lead with the limitations. The plated-food problem and the six-gate check are the parts I am most pleased with, because they are where I stopped the concept from overclaiming and designed a smaller, more honest behaviour instead. My QA background pushed me toward the edge cases first: false eating events, blurry captures, confounded biometrics, and the moments where the right answer is to ask one question rather than guess.</p>
+        <p>Scoping this taught me to lead with the limitations. The plated-food problem and the decision to judge every meal only against a stable personal baseline are the parts I am most pleased with, because they are where I kept the concept from overclaiming and designed a smaller, more honest behaviour instead. My QA background pushed me toward the edge cases first: false eating events, blurry captures, confounded biometrics, and the moments where the right answer is to ask one question rather than guess.</p>
       </section>
 
       <section class="case-links">
         <h2>Links</h2>
         <div class="btn-group">
-          <a href="https://www.loom.com/share/abd4ce507395400f8965f8f8378cb9de" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Video Demo</a>
+          <a href="https://vital-intelligence.ai.studio" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Live Demo</a>
           <a href="../assets/projects/vital-intelligence/Assignment_02_PRD_Saranya_C50.pdf" class="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">Product Requirements Document</a>
         </div>
       </section>
