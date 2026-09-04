@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vital Intelligence by Saranya Selvaraj: a concept-stage AI prototype for passive food logging and personal metabolic awareness, built in Google AI Studio.">
+  <title>Vital Intelligence &middot; Saranya Selvaraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">Saranya Selvaraj</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="case-study">
+    <div class="container fade-in">
+      <a href="../index.html#projects" class="back-link">&larr; Back to Portfolio</a>
+
+      <header class="case-study-header">
+        <span class="tag">AI Prototype</span>
+        <h1>Vital Intelligence: Passive Food Logging and Personal Metabolic Awareness</h1>
+        <p class="case-subnote">Concept stage &middot; Prototype built in Google AI Studio &middot; Consumer wellness only, not a medical device</p>
+      </header>
+
+      <section class="case-section">
+        <h2>Overview</h2>
+        <p>Vital Intelligence is a concept-stage product I scoped and prototyped end to end: a wearable, a paired camera, and a mobile app that log meals automatically and, each evening, hand the user a plain-language picture of their day. There is no real-time alerting. The user opens the app when they choose and reads one calm summary of what they ate and how their body responded.</p>
+        <p>Nothing is built. Every accuracy and detection claim in this write-up is a design target, not a validated result. The work here is the product thinking: the requirements, the flows, the trigger logic, the honest limitations, and a clickable prototype that makes the concept concrete.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>The Problem</h2>
+        <p>Manual food tracking does not stick. Most people who start a food diary give up within a month, and what they remember eating rarely matches what they actually ate. That leaves two gaps: no reliable record of intake, and no connection between what someone eats and how their body actually reacts to it.</p>
+        <p>The persona I designed around is Megan, 38, a pharmacy manager who wants to lose weight to lower her diabetes risk. She has tried the food diary apps and cannot keep up with logging.</p>
+        <blockquote class="case-quote">"I know I should track what I eat. But after a long day, I just can't face logging every meal."</blockquote>
+        <p>She needs effortless tracking, an accurate sense of her calorie needs, and above all an understanding of how her body responds to the foods she eats every day, so she knows which habits are working for her.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>The Concept: Three Components</h2>
+        <p>Three parts work together so the user does nothing at mealtime.</p>
+        <div class="case-table-wrap">
+          <table class="case-table">
+            <thead>
+              <tr><th>Component</th><th>Role</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Wearable (ring or watch)</th>
+                <td>Detects eating events from hand-to-mouth gestures, heart rate, GPS and time of day. Monitors biometrics for 90 minutes after each meal. Tracks sleep overnight.</td>
+              </tr>
+              <tr>
+                <th>Paired camera</th>
+                <td>Smart glasses, clip or pendant. Dormant by default. Fires a short burst on the initial eating event, then again every 10 minutes while gestures continue.</td>
+              </tr>
+              <tr>
+                <th>Mobile app</th>
+                <td>Receives captures, compares each against items already logged in the current window, builds personal baselines per meal type, and delivers the end-of-day narrative.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>How Detection Works</h2>
+        <p>The camera never runs continuously. It is dormant by default and wakes only on two conditions, going back to sleep after each burst.</p>
+        <div class="case-table-wrap">
+          <table class="case-table">
+            <thead>
+              <tr><th>Trigger</th><th>What happens</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Eating event fires</th>
+                <td>The wearable detects eating from gesture, heart rate, GPS and time of day. The camera wakes, takes a four-frame burst over three seconds, and goes dormant. The 90-minute biometric window opens.</td>
+              </tr>
+              <tr>
+                <th>Gestures continue within 10 minutes</th>
+                <td>The camera wakes again for another burst. The app compares the new images against items already logged in this window and adds anything new automatically. Repeats every 10 minutes while eating continues.</td>
+              </tr>
+              <tr>
+                <th>15-minute clean gesture gap</th>
+                <td>The window closes and the eating episode ends. Any gesture activity that resumes after this gap is treated as a new, separate eating event.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The 10-minute repeat interval is short enough to catch a drink or a second snack packet before it leaves the frame, but long enough that the camera is not firing constantly during a normal meal. The 15-minute gap is long enough that getting up to refill water or take a call does not close the window, and reliable enough that a continuous gap of that length means eating has genuinely stopped. Both thresholds are designed to personalise over time.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>A Known Limitation I Designed Around</h2>
+        <p>The repeat-capture comparison works well for packaged and discrete items. Crisps, drinks, snack bars, fruit and branded packaging have recognisable visual signatures the app can match across captures taken minutes apart, so new items get logged fully passively.</p>
+        <p>Plated and bowl food is the hard case. From a single camera angle, the app cannot reliably tell whether a half-eaten plate of pasta is the same portion or a second helping. The visual difference between those two states is often zero, and estimating the delta between two portion photos compounds the error.</p>
+        <p>Rather than pretend otherwise, the design accepts the limit. For plated food the system takes one estimate from the opening capture and tracks how long the eating window runs. Only if that window runs longer than the user's personal baseline for that meal does the evening narrative ask a single yes or no question: "Your lunch ran longer than usual, did you go back for more?" One touchpoint, and only when the duration signal justifies it.</p>
+        <div class="case-table-wrap">
+          <table class="case-table">
+            <thead>
+              <tr><th>Food type</th><th>Repeat-capture behaviour</th><th>Portion question?</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Packaged or discrete items</th><td>Full new-versus-old comparison. New items logged automatically.</td><td>No, fully passive</td></tr>
+              <tr><th>Drinks</th><td>Treated as packaged. New ghost log if visible in frame.</td><td>No, fully passive</td></tr>
+              <tr><th>Plated food, within baseline duration</th><td>Single opening capture. Duration tracked.</td><td>No</td></tr>
+              <tr><th>Plated food, exceeds baseline duration</th><td>Single opening capture. Duration flag raised.</td><td>Yes, one question at end of day</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Nothing Gets Flagged Without Good Reason</h2>
+        <p>For the first two to three weeks the app observes and builds a personal baseline before it surfaces any metabolic pattern. After that, a biometric response is only raised in the narrative if it clears a set of gates designed to strip out noise:</p>
+        <ul>
+          <li>The eating event was confirmed as a real meal, not random activity</li>
+          <li>Exercise or movement after the meal is measured and accounted for</li>
+          <li>Stress signals picked up by the wearable are flagged for the user to confirm, and the app learns how stress typically shows up for that person</li>
+          <li>Snacking and grazing in the hours after a meal is included, not ignored</li>
+          <li>Confounders like poor sleep, feeling unwell or heavy caffeine set the window aside rather than drawing a conclusion from it</li>
+        </ul>
+        <p>Once the baseline is set, the app tracks what is routine for that user and only surfaces what genuinely deviates, relative to their own habits and health goals.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>The Evening Narrative</h2>
+        <p>Every summary ends with either one clear suggestion or a plain reassurance that everything looks fine. There are three modes, tied to how many times a pattern has been seen.</p>
+        <div class="case-table-wrap">
+          <table class="case-table">
+            <thead>
+              <tr><th>Mode</th><th>Trigger</th><th>Example</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Quiet</th><td>Everything consistent</td><td>"4 eating events. Sleep 7h 30m. All meals within your personal patterns. Keep it up."</td></tr>
+              <tr><th>Emerging</th><td>Pattern seen once or twice</td><td>"1pm pasta, stronger response than usual. Second time this week. Try the smaller portion."</td></tr>
+              <tr><th>Confirmed</th><td>Pattern seen three or more times</td><td>"Pasta flagged three times. Try adding protein. Worth raising with a dietitian, no urgency."</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-section" id="screenshots">
+        <h2>Prototype Walkthrough</h2>
+        <p>I built a clickable prototype in Google AI Studio to make the concept tangible: the dashboard, an eating-event simulation, the event log with biometric signals, the weekly insights view, and the evening narrative.</p>
+        <div class="screenshot-gallery">
+          <figure class="case-screenshot">
+            <img src="../assets/projects/vital-intelligence/screens/vi-01-dashboard.png" alt="Vital Intelligence app dashboard showing Smart Ring monitoring and Health Hub synced, a calorie ring reading 1280 kcal eaten with 720 remaining, protein carbs and fat totals, and a Simulate Eating Event button">
+            <figcaption>Dashboard: calories and macros for the day, with device status and a control to simulate an eating event</figcaption>
+          </figure>
+          <figure class="case-screenshot">
+            <img src="../assets/projects/vital-intelligence/screens/vi-02-home-pipeline.png" alt="Lower half of the home screen showing a link to view today's log of three entries and a four-step pipeline: Smart Ring detects gesture and snaps photo, AI pipeline identifies food and macros, Pulse Match bio-validates via smart ring pulse, Health Hub as the neutral data backbone">
+            <figcaption>The four-step flow, from ring detection to on-device food identification to biometric validation</figcaption>
+          </figure>
+          <figure class="case-screenshot">
+            <img src="../assets/projects/vital-intelligence/screens/vi-03-events-log.png" alt="Event log showing two verified eating events, each with biometric signals (BPM range, HRV change, skin temp, gesture count) and an identified food with calorie and macro estimates: Salad Bowl 380 kcal and Greek Yogurt with Berries 320 kcal">
+            <figcaption>Event log: each eating event pairs an identified meal with the biometric signals captured in the window after it</figcaption>
+          </figure>
+          <figure class="case-screenshot">
+            <img src="../assets/projects/vital-intelligence/screens/vi-04-insights.png" alt="Insights screen with a seven-day daily calories chart against a 2000 kcal goal, week average, days logged and days on goal tiles, and Vital Intelligence counts for ring-detected meals and pulse wave validations">
+            <figcaption>Weekly insights: intake against goal over seven days, plus how many meals were passively detected and biometrically validated</figcaption>
+          </figure>
+          <figure class="case-screenshot">
+            <img src="../assets/projects/vital-intelligence/screens/vi-05-narrative.png" alt="Tonight's Narrative card in a dark panel describing a restful 7.4 hours of sleep with score 82, two passive eating events cataloged as Greek Yogurt with Berries and Turkey Club Sandwich, stable autonomic biometrics within expected parameters, and no elevated heart rate or metabolic patterns flagged">
+            <figcaption>The evening narrative: one calm, plain-language summary of the day, in Quiet mode because nothing deviated</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Privacy by Design</h2>
+        <p>The concept keeps data on the device. Food images are analysed on the phone the moment the photo is taken and deleted straight after, never stored or sent. Raw biometric signal is held only while the system checks for patterns, then cleared. Only summary stats are kept, stored locally to build the personal baseline over time. There is no Vital Intelligence server and no cloud database. The app reads sleep data from Apple Health or Google Health each morning and writes nothing back.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>What This Is Not</h2>
+        <ul>
+          <li>Not a medical device. Consumer wellness only, with no diagnostic claims.</li>
+          <li>Not a glucose monitor. Heart rate and HRV are indirect proxies that suggest patterns, they do not measure metabolic outcomes.</li>
+          <li>Not a prediabetes management tool. For users with clinical metabolic risk it can support awareness but should not replace CGM or clinical monitoring.</li>
+          <li>Not clinically integrated. No EHR connection, Apple Health and Google Fit only.</li>
+          <li>Not accurate on day one. All three layers improve with use over weeks.</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>How Success Would Be Measured</h2>
+        <p>Because the core value is automation, the metrics I defined center on whether that automation keeps delivering.</p>
+        <div class="case-table-wrap">
+          <table class="case-table">
+            <thead>
+              <tr><th>Metric</th><th>Why it matters</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Day 14 retention</th><td>The point where manual-logging apps lose most users. If passive logging works, users are still active here.</td></tr>
+              <tr><th>Day 14 churn</th><td>A churn rate of 40 percent or higher would signal that the auto-logging or the insights are not landing as valuable.</td></tr>
+              <tr><th>Insights card views per week</th><td>Repeat views of the evening narrative indicate the insight, not just the tracking, is what keeps people coming back.</td></tr>
+              <tr><th>Wearable disconnection rate (guardrail)</th><td>If the wearable unlinks or stops syncing for more than 48 hours the automation breaks and the dashboard goes empty, which drives immediate churn.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Open Questions and What I Learned</h2>
+        <p>The honest risks sit in the hardware and the science, not the app:</p>
+        <ul>
+          <li>Can real, personal metabolic patterns be detected from passive biometric signals rather than noise?</li>
+          <li>Is a camera integrated into a ring or wearable technically feasible?</li>
+          <li>How accurate is eating-event detection from a wrist gesture, and how badly does eating while walking break it?</li>
+          <li>Will people adopt a wearable with a camera at all?</li>
+        </ul>
+        <p>Scoping this taught me to lead with the limitations. The plated-food problem and the six-gate check are the parts I am most pleased with, because they are where I stopped the concept from overclaiming and designed a smaller, more honest behaviour instead. My QA background pushed me toward the edge cases first: false eating events, blurry captures, confounded biometrics, and the moments where the right answer is to ask one question rather than guess.</p>
+      </section>
+
+      <section class="case-links">
+        <h2>Links</h2>
+        <div class="btn-group">
+          <a href="https://www.loom.com/share/abd4ce507395400f8965f8f8378cb9de" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Video Demo</a>
+          <a href="../assets/projects/vital-intelligence/Assignment_02_PRD_Saranya_C50.pdf" class="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">Product Requirements Document</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Saranya Selvaraj &middot; Built with purpose, not a template.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
